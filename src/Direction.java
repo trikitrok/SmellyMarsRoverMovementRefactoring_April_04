@@ -14,15 +14,7 @@ public class Direction {
     }
 
     public Coordinates displace(Coordinates location, int displacement) {
-        if (isNorth()) {
-            throw new RuntimeException("Defect, code should not get here! (Direction displace)");
-        } else if (isSouth()) {
-            throw new RuntimeException("Defect, code should not get here! (Direction displace)");
-        } else if (isWest()) {
-            throw new RuntimeException("Defect, code should not get here! (Direction displace)");
-        } else {
-            return location.add(new Coordinates(+displacement, 0));
-        }
+        throw new RuntimeException("Defect, code should not get here! (Direction displace)");
     }
 
     @Override
