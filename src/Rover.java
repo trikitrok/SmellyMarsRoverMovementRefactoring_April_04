@@ -61,13 +61,15 @@ public class Rover {
         }
     }
 
-    private int extractDisplacement(String command) {
-        int displacement1 = -1;
-
-        if (command.equals("f")) {
-            displacement1 = 1;
+    private int extractDisplacement(String commandRepresentation) {
+        if (isForwardsDisplacement(commandRepresentation)) {
+            return 1;
         }
-        return displacement1;
+        return -1;
+    }
+
+    private boolean isForwardsDisplacement(String commandRepresentation) {
+        return commandRepresentation.equals("f");
     }
 
     private boolean isRightRotation(String command) {
