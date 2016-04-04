@@ -18,4 +18,8 @@ public class Coordinates {
         return y == that.y;
 
     }
+
+    public Coordinates add(Coordinates other) {
+        return new Coordinates(x + other.x, y + other.y);
+    }
 }
