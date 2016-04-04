@@ -48,12 +48,7 @@ public class Rover {
     }
 
     private void displace(String command) {
-        int displacement1 = -1;
-
-        if (command.equals("f")) {
-            displacement1 = 1;
-        }
-        int displacement = displacement1;
+        int displacement = extractDisplacement(command);
 
         if (isHeadedNorth()) {
             y += displacement;
@@ -64,6 +59,15 @@ public class Rover {
         } else {
             x += displacement;
         }
+    }
+
+    private int extractDisplacement(String command) {
+        int displacement1 = -1;
+
+        if (command.equals("f")) {
+            displacement1 = 1;
+        }
+        return displacement1;
     }
 
     private boolean isRightRotation(String command) {
