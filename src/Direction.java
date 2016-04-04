@@ -9,6 +9,19 @@ public class Direction {
         throw new RuntimeException("Defect, code should not get here! (Direction rotateRight)");
     }
 
+    public Direction rotateLeft() {
+        if (isNorth(directionRepresentation)) {
+            return west();
+        } else if (isSouth(directionRepresentation)) {
+            return east();
+        } else if (isWest(directionRepresentation)) {
+            return south();
+        } else {
+            return north();
+        }
+    }
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
