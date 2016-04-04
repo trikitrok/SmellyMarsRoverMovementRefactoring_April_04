@@ -5,6 +5,18 @@ public class Direction {
         this.directionRepresentation = directionRepresentation;
     }
 
+    public Direction rotateRight() {
+        if (isNorth()) {
+            return east();
+        } else if (isSouth()) {
+            return west();
+        } else if (isWest()) {
+            return north();
+        } else {
+            return south();
+        }
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

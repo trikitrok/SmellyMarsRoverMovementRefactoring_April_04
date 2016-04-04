@@ -24,15 +24,7 @@ public class Rover {
     }
 
     private void rotateRight() {
-        if (isHeadedNorth()) {
-            this.direction = Direction.east();
-        } else if (isHeadedSouth()) {
-            this.direction = Direction.west();
-        } else if (isHeadedWest()) {
-            this.direction = Direction.north();
-        } else {
-            this.direction = Direction.south();
-        }
+        direction = direction.rotateRight();
     }
 
     private void rotateLeft() {
