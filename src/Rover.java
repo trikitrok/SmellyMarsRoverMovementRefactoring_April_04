@@ -1,5 +1,4 @@
 public class Rover {
-
     private String direction;
     private int y;
     private int x;
@@ -62,10 +61,11 @@ public class Rover {
     }
 
     private int extractDisplacement(String commandRepresentation) {
+        final int DISPLACEMENT_LENGTH = 1;
         if (isForwardsDisplacement(commandRepresentation)) {
-            return 1;
+            return DISPLACEMENT_LENGTH;
         }
-        return -1;
+        return -DISPLACEMENT_LENGTH;
     }
 
     private boolean isForwardsDisplacement(String commandRepresentation) {
