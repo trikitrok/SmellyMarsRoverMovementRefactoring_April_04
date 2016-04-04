@@ -92,8 +92,8 @@ public class Rover {
 
         Rover rover = (Rover) o;
 
-        if (y != rover.y) return false;
-        if (x != rover.x) return false;
-        return direction != null ? direction.equals(rover.direction) : rover.direction == null;
+        if (direction != null ? !direction.equals(rover.direction) : rover.direction != null) return false;
+        return location != null ? location.equals(rover.location) : rover.location == null;
+
     }
 }
