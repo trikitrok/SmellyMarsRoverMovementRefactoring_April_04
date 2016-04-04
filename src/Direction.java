@@ -1,15 +1,7 @@
-public class Direction {
-    public Direction rotateRight() {
-        throw new RuntimeException("Defect, code should not get here! (Direction rotateRight)");
-    }
-
-    public Direction rotateLeft() {
-        throw new RuntimeException("Defect, code should not get here! (Direction rotateLeft)");
-    }
-
-    public Coordinates displace(Coordinates location, int displacement) {
-        throw new RuntimeException("Defect, code should not get here! (Direction displace)");
-    }
+public abstract class Direction {
+    public abstract Direction rotateRight();
+    public abstract Direction rotateLeft();
+    public abstract Coordinates displace(Coordinates location, int displacement) ;
 
     @Override
     public boolean equals(Object o) {
