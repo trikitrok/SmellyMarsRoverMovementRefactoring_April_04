@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Rover {
     private Vector vector;
 
@@ -6,6 +9,8 @@ public class Rover {
     }
 
     public void receive(String commandsSequence) {
+        List<Command> commands = new ArrayList<>();
+
         for (int i = 0; i < commandsSequence.length(); ++i) {
             String command = commandsSequence.substring(i, i + 1);
 
@@ -17,6 +22,10 @@ public class Rover {
                 int displacement = extractDisplacement(command);
                 vector = new Displacement(displacement).apply(vector);
             }
+        }
+
+        for(Command command : commands) {
+            vector = command.apply(vector);
         }
     }
 
