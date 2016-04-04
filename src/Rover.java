@@ -54,18 +54,6 @@ public class Rover {
         return command.equals("l");
     }
 
-    private boolean isHeadedWest() {
-        return direction.isWest();
-    }
-
-    private boolean isHeadedSouth() {
-        return direction.isSouth();
-    }
-
-    private boolean isHeadedNorth() {
-        return direction.isNorth();
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

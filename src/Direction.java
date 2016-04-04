@@ -28,18 +28,6 @@ public class Direction {
 
     }
 
-    public boolean isWest() {
-        return isWest(directionRepresentation);
-    }
-
-    public boolean isSouth() {
-        return isSouth(directionRepresentation);
-    }
-
-    public boolean isNorth() {
-        return isNorth(directionRepresentation);
-    }
-
     public static Direction heading(String directionRepresentation) {
         if (isNorth(directionRepresentation)) {
             return north();
