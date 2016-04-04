@@ -13,6 +13,18 @@ public class Direction {
         throw new RuntimeException("Defect, code should not get here! (Direction rotateLeft)");
     }
 
+    public Coordinates displace(Coordinates location, int displacement) {
+        if (isNorth()) {
+            return location.add(new Coordinates(0, displacement));
+        } else if (isSouth()) {
+            return location.add(new Coordinates(0, -displacement));
+        } else if (isWest()) {
+            return location.add(new Coordinates(-displacement, 0));
+        } else {
+            return location.add(new Coordinates(+displacement, 0));
+        }
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

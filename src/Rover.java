@@ -31,16 +31,7 @@ public class Rover {
 
     private void displace(String command) {
         int displacement = extractDisplacement(command);
-
-        if (isHeadedNorth()) {
-            location = location.add(new Coordinates(0, displacement));
-        } else if (isHeadedSouth()) {
-            location = location.add(new Coordinates(0, -displacement));
-        } else if (isHeadedWest()) {
-            location = location.add(new Coordinates(-displacement, 0));
-        } else {
-            location = location.add(new Coordinates(+displacement, 0));
-        }
+        location = direction.displace(location, displacement);
     }
 
     private int extractDisplacement(String commandRepresentation) {
