@@ -1,26 +1,19 @@
 public class CommandFactory {
+
+    private static final int DISPLACEMENT_LENGTH = 1;
+
     public static Command createFrom(String representation) {
         if (isLeftRotation(representation)) {
             return new LeftRotation();
         } else if (isRightRotation(representation)) {
             return new RightRotation();
         } else if (isForwardsDisplacement(representation)) {
-            int displacement = extractDisplacement(representation);
-            return new Displacement(displacement);
+            return new Displacement(DISPLACEMENT_LENGTH);
         } else if (isBackwardsDisplacement(representation)) {
-            int displacement = extractDisplacement(representation);
-            return new Displacement(displacement);
+            return new Displacement(- DISPLACEMENT_LENGTH);
         } else {
             return new StayingPut();
         }
-    }
-
-    private static int extractDisplacement(String representation) {
-        final int DISPLACEMENT_LENGTH = 1;
-        if (isForwardsDisplacement(representation)) {
-            return DISPLACEMENT_LENGTH;
-        }
-        return -DISPLACEMENT_LENGTH;
     }
 
     private static boolean isBackwardsDisplacement(String representation) {
