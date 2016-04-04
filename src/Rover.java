@@ -6,8 +6,12 @@ public class Rover {
     }
 
     public void receive(String commandsSequence) {
-        Commands commands = Commands.create(commandsSequence);
+        Commands commands = createCommandsFrom(commandsSequence);
         vector = commands.apply(vector);
+    }
+
+    private Commands createCommandsFrom(String commandsSequence) {
+        return CommandsFactory.create(commandsSequence);
     }
 
     @Override
