@@ -1,10 +1,12 @@
 public class Rover {
     private Direction direction;
     private Coordinates location;
+    private Vector vector;
 
     public Rover(int x, int y, String directionRepresentation) {
         this.direction = Direction.heading(directionRepresentation);
         this.location = new Coordinates(x, y);
+        this.vector = new Vector(location, direction);
     }
 
     public void receive(String commandsSequence) {
