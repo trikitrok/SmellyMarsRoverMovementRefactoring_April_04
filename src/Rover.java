@@ -1,11 +1,9 @@
 public class Rover {
-    private String directionRepresentation;
     private int y;
     private int x;
     private Direction direction;
 
     public Rover(int x, int y, String directionRepresentation) {
-        this.directionRepresentation = directionRepresentation;
         this.y = y;
         this.x = x;
         this.direction = new Direction(directionRepresentation);
@@ -27,25 +25,25 @@ public class Rover {
 
     private void rotateRight() {
         if (isHeadedNorth()) {
-            directionRepresentation = "E";
+            this.direction = new Direction("E");
         } else if (isHeadedSouth()) {
-            directionRepresentation = "W";
+            this.direction = new Direction("W");
         } else if (isHeadedWest()) {
-            directionRepresentation = "N";
+            this.direction = new Direction("N");
         } else {
-            directionRepresentation = "S";
+            this.direction = new Direction("S");
         }
     }
 
     private void rotateLeft() {
         if (isHeadedNorth()) {
-            directionRepresentation = "W";
+            this.direction = new Direction("W");
         } else if (isHeadedSouth()) {
-            directionRepresentation = "E";
+            this.direction = new Direction("E");
         } else if (isHeadedWest()) {
-            directionRepresentation = "S";
+            this.direction = new Direction("S");
         } else {
-            directionRepresentation = "N";
+            this.direction = new Direction("N");
         }
     }
 
@@ -84,42 +82,26 @@ public class Rover {
     }
 
     private boolean isHeadedWest() {
-        return directionRepresentation.equals("W");
+        return direction.isWest();
     }
 
     private boolean isHeadedSouth() {
-        return directionRepresentation.equals("S");
+        return direction.isSouth();
     }
 
     private boolean isHeadedNorth() {
-        return directionRepresentation.equals("N");
+        return direction.isNorth();
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
 
-        if (obj == null)
-            return false;
+        Rover rover = (Rover) o;
 
-        if (getClass() != obj.getClass())
-            return false;
-
-        Rover other = (Rover) obj;
-
-        if (directionRepresentation == null) {
-            if (other.directionRepresentation != null)
-                return false;
-        } else if (!directionRepresentation.equals(other.directionRepresentation))
-            return false;
-
-        if (x != other.x)
-            return false;
-
-        if (y != other.y)
-            return false;
-
-        return true;
+        if (y != rover.y) return false;
+        if (x != rover.x) return false;
+        return direction != null ? direction.equals(rover.direction) : rover.direction == null;
     }
 }

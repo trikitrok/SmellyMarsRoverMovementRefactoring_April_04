@@ -15,4 +15,16 @@ public class Direction {
         return directionRepresentation != null ? directionRepresentation.equals(direction.directionRepresentation) : direction.directionRepresentation == null;
 
     }
+
+    public boolean isWest() {
+        return directionRepresentation.equals("W");
+    }
+
+    public boolean isSouth() {
+        return directionRepresentation.equals("S");
+    }
+
+    public boolean isNorth() {
+        return directionRepresentation.equals("N");
+    }
 }
