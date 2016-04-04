@@ -10,7 +10,13 @@ public class Rover {
         this.direction = Direction.heading(directionRepresentation);
         this.location = new Coordinates(x, y);
     }
-    
+
+    private void setLocation(int x, int y) {
+        this.y = y;
+        this.x = x;
+        this.location = new Coordinates(x, y);
+    }
+
     public void receive(String commandsSequence) {
         for (int i = 0; i < commandsSequence.length(); ++i) {
             String command = commandsSequence.substring(i, i + 1);
@@ -37,13 +43,13 @@ public class Rover {
         int displacement = extractDisplacement(command);
 
         if (isHeadedNorth()) {
-            y += displacement;
+            setLocation(x, y + displacement);
         } else if (isHeadedSouth()) {
-            y -= displacement;
+            setLocation(x, y - displacement);
         } else if (isHeadedWest()) {
-            x -= displacement;
+            setLocation(x - displacement, y);
         } else {
-            x += displacement;
+            setLocation(x + displacement, y);
         }
     }
 
