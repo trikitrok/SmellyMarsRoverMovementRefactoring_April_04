@@ -6,18 +6,21 @@ public class CommandsFactory {
         List<Command> commands = new ArrayList<>();
 
         for (int i = 0; i < commandsSequence.length(); ++i) {
-            String command = commandsSequence.substring(i, i + 1);
-
-            if (isLeftRotation(command)) {
-                commands.add(new LeftRotation());
-            } else if (isRightRotation(command)) {
-                commands.add(new RightRotation());
-            } else {
-                int displacement = extractDisplacement(command);
-                commands.add(new Displacement(displacement));
-            }
+            String commandRepresentation = commandsSequence.substring(i, i + 1);
+            commands.add(createCommandFrom(commandRepresentation));
         }
         return new Commands(commands);
+    }
+
+    private static Command createCommandFrom(String commandRepresentation) {
+        if (isLeftRotation(commandRepresentation)) {
+            return new LeftRotation();
+        } else if (isRightRotation(commandRepresentation)) {
+            return new RightRotation();
+        } else {
+            int displacement = extractDisplacement(commandRepresentation);
+            return new Displacement(displacement);
+        }
     }
 
     private static int extractDisplacement(String commandRepresentation) {
