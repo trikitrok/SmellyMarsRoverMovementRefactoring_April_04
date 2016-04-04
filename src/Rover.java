@@ -14,14 +14,10 @@ public class Rover {
             } else if (isRightRotation(command)) {
                 vector = new RightRotation().apply(vector);
             } else {
-                displace(command);
+                int displacement = extractDisplacement(command);
+                vector = new Displacement(displacement).apply(vector);
             }
         }
-    }
-
-    private void displace(String command) {
-        int displacement = extractDisplacement(command);
-        vector = vector.displace(displacement);
     }
 
     private int extractDisplacement(String commandRepresentation) {
