@@ -11,7 +11,7 @@ public class Direction {
         } else if (isSouth()) {
             throw new RuntimeException("Defect, code should not get here! (Direction rotateRight)");
         } else if (isWest()) {
-            return north();
+            throw new RuntimeException("Defect, code should not get here! (Direction rotateRight)");
         } else {
             return south();
         }
@@ -41,10 +41,12 @@ public class Direction {
     }
 
     public static Direction heading(String directionRepresentation) {
-        if(directionRepresentation.equals("N")) {
+        if (directionRepresentation.equals("N")) {
             return north();
-        } else if(directionRepresentation.equals("S")) {
+        } else if (directionRepresentation.equals("S")) {
             return south();
+        } else if (directionRepresentation.equals(("W"))) {
+            return west();
         }
 
         return new Direction(directionRepresentation);
@@ -55,7 +57,7 @@ public class Direction {
     }
 
     public static Direction west() {
-        return new Direction("W");
+        return new West("W");
     }
 
     public static Direction north() {
