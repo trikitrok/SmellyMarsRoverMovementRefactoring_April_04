@@ -2,13 +2,15 @@ public class Rover {
     private int y;
     private int x;
     private Direction direction;
+    private Coordinates location;
 
     public Rover(int x, int y, String directionRepresentation) {
         this.y = y;
         this.x = x;
         this.direction = Direction.heading(directionRepresentation);
+        this.location = new Coordinates(x, y);
     }
-
+    
     public void receive(String commandsSequence) {
         for (int i = 0; i < commandsSequence.length(); ++i) {
             String command = commandsSequence.substring(i, i + 1);
