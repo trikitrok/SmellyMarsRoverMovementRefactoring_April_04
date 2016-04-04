@@ -25,25 +25,25 @@ public class Rover {
 
     private void rotateRight() {
         if (isHeadedNorth()) {
-            this.direction = new Direction("E");
+            this.direction = Direction.east();
         } else if (isHeadedSouth()) {
-            this.direction = new Direction("W");
+            this.direction = Direction.west();
         } else if (isHeadedWest()) {
-            this.direction = new Direction("N");
+            this.direction = Direction.north();
         } else {
-            this.direction = new Direction("S");
+            this.direction = Direction.south();
         }
     }
 
     private void rotateLeft() {
         if (isHeadedNorth()) {
-            this.direction = new Direction("W");
+            this.direction = Direction.west();
         } else if (isHeadedSouth()) {
-            this.direction = new Direction("E");
+            this.direction = Direction.east();
         } else if (isHeadedWest()) {
-            this.direction = new Direction("S");
+            this.direction = Direction.south();
         } else {
-            this.direction = new Direction("N");
+            this.direction = Direction.north();
         }
     }
 

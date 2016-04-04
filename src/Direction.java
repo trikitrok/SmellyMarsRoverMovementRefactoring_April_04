@@ -1,7 +1,7 @@
 public class Direction {
     private String directionRepresentation;
 
-    public Direction(String directionRepresentation) {
+    protected Direction(String directionRepresentation) {
         this.directionRepresentation = directionRepresentation;
     }
 
@@ -26,5 +26,21 @@ public class Direction {
 
     public boolean isNorth() {
         return directionRepresentation.equals("N");
+    }
+
+    public static Direction east() {
+        return new Direction("E");
+    }
+
+    public static Direction west() {
+        return new Direction("W");
+    }
+
+    public static Direction north() {
+        return new Direction("N");
+    }
+
+    public static Direction south() {
+        return new Direction("S");
     }
 }
