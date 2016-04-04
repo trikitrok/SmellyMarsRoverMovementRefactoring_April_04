@@ -1,26 +1,10 @@
 public class Rover {
-    private int y;
-    private int x;
     private Direction direction;
     private Coordinates location;
 
     public Rover(int x, int y, String directionRepresentation) {
-        this.y = y;
-        this.x = x;
         this.direction = Direction.heading(directionRepresentation);
         this.location = new Coordinates(x, y);
-    }
-
-    private void setLocation(int x, int y) {
-        this.y = y;
-        this.x = x;
-        this.location = new Coordinates(x, y);
-    }
-
-    private void setLocation(int x, int y, Coordinates displacement) {
-        this.y = y;
-        this.x = x;
-        location = location.add(displacement);
     }
 
     public void receive(String commandsSequence) {
@@ -49,13 +33,13 @@ public class Rover {
         int displacement = extractDisplacement(command);
 
         if (isHeadedNorth()) {
-            setLocation(x, y + displacement, new Coordinates(0, displacement));
+            location = location.add(new Coordinates(0, displacement));
         } else if (isHeadedSouth()) {
-            setLocation(x, y - displacement, new Coordinates(0, -displacement));
+            location = location.add(new Coordinates(0, -displacement));
         } else if (isHeadedWest()) {
-            setLocation(x - displacement, y, new Coordinates(-displacement, 0));
+            location = location.add(new Coordinates(-displacement, 0));
         } else {
-            setLocation(x + displacement, y, new Coordinates(+displacement, 0));
+            location = location.add(new Coordinates(+displacement, 0));
         }
     }
 
