@@ -6,15 +6,7 @@ public class Direction {
     }
 
     public Direction rotateRight() {
-        if (isNorth()) {
-            throw new RuntimeException("Defect, code should not get here! (Direction rotateRight)");
-        } else if (isSouth()) {
-            throw new RuntimeException("Defect, code should not get here! (Direction rotateRight)");
-        } else if (isWest()) {
-            throw new RuntimeException("Defect, code should not get here! (Direction rotateRight)");
-        } else {
-            return south();
-        }
+        throw new RuntimeException("Defect, code should not get here! (Direction rotateRight)");
     }
 
     @Override
@@ -48,12 +40,11 @@ public class Direction {
         } else if (directionRepresentation.equals(("W"))) {
             return west();
         }
-
-        return new Direction(directionRepresentation);
+        return east();
     }
 
     public static Direction east() {
-        return new Direction("E");
+        return new East("E");
     }
 
     public static Direction west() {
