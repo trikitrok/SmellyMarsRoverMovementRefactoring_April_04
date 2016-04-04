@@ -40,6 +40,10 @@ public class Direction {
         return directionRepresentation.equals("N");
     }
 
+    public static Direction heading(String directionRepresentation) {
+        return new Direction(directionRepresentation);
+    }
+
     public static Direction east() {
         return new Direction("E");
     }
