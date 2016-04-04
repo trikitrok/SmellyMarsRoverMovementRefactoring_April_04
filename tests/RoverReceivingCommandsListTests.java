@@ -29,4 +29,13 @@ public class RoverReceivingCommandsListTests {
 
         assertEquals(new Rover(0, 0, "E"), rover);
     }
+
+    @Test
+    public void unknownCommands() {
+        Rover rover = new Rover(0, 0, "N");
+
+        rover.receive("**++");
+
+        assertEquals(new Rover(0, 0, "N"), rover);
+    }
 }

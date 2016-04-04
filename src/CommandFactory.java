@@ -4,9 +4,14 @@ public class CommandFactory {
             return new LeftRotation();
         } else if (isRightRotation(representation)) {
             return new RightRotation();
-        } else {
+        } else if (isForwardsDisplacement(representation)) {
             int displacement = extractDisplacement(representation);
             return new Displacement(displacement);
+        } else if (isBackwardsDisplacement(representation)) {
+            int displacement = extractDisplacement(representation);
+            return new Displacement(displacement);
+        } else {
+            return new StayingPut();
         }
     }
 
@@ -16,6 +21,10 @@ public class CommandFactory {
             return DISPLACEMENT_LENGTH;
         }
         return -DISPLACEMENT_LENGTH;
+    }
+
+    private static boolean isBackwardsDisplacement(String representation) {
+        return representation.equals("b");
     }
 
     private static boolean isForwardsDisplacement(String representation) {
