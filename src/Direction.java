@@ -21,23 +21,23 @@ public class Direction {
     }
 
     public boolean isWest() {
-        return directionRepresentation.equals("W");
+        return isWest(directionRepresentation);
     }
 
     public boolean isSouth() {
-        return directionRepresentation.equals("S");
+        return isSouth(directionRepresentation);
     }
 
     public boolean isNorth() {
-        return directionRepresentation.equals("N");
+        return isNorth(directionRepresentation);
     }
 
     public static Direction heading(String directionRepresentation) {
-        if (directionRepresentation.equals("N")) {
+        if (isNorth(directionRepresentation)) {
             return north();
-        } else if (directionRepresentation.equals("S")) {
+        } else if (isSouth(directionRepresentation)) {
             return south();
-        } else if (directionRepresentation.equals(("W"))) {
+        } else if (isWest(directionRepresentation)) {
             return west();
         }
         return east();
@@ -57,5 +57,17 @@ public class Direction {
 
     public static Direction south() {
         return new South("S");
+    }
+
+    private static boolean isNorth(String directionRepresentation) {
+        return directionRepresentation.equals("N");
+    }
+
+    private static boolean isSouth(String directionRepresentation) {
+        return directionRepresentation.equals("S");
+    }
+
+    private static boolean isWest(String directionRepresentation) {
+        return directionRepresentation.equals("W");
     }
 }
