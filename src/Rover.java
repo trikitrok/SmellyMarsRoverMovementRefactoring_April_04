@@ -9,6 +9,12 @@ public class Rover {
         this.vector = new Vector(location, direction);
     }
 
+    private void setVector(Direction direction, Coordinates location) {
+        this.direction = direction;
+        this.location = location;
+        this.vector = new Vector(location, direction);
+    }
+
     public void receive(String commandsSequence) {
         for (int i = 0; i < commandsSequence.length(); ++i) {
             String command = commandsSequence.substring(i, i + 1);
@@ -24,16 +30,16 @@ public class Rover {
     }
 
     private void rotateRight() {
-        direction = direction.rotateRight();
+        setVector(direction.rotateRight(), location);
     }
 
     private void rotateLeft() {
-        direction = direction.rotateLeft();
+        setVector(direction.rotateLeft(), location);
     }
 
     private void displace(String command) {
         int displacement = extractDisplacement(command);
-        location = direction.displace(location, displacement);
+        setVector(direction, direction.displace(location, displacement));
     }
 
     private int extractDisplacement(String commandRepresentation) {
