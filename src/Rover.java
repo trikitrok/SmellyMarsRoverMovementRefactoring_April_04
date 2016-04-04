@@ -10,17 +10,13 @@ public class Rover {
             String command = commandsSequence.substring(i, i + 1);
 
             if (isLeftRotation(command)) {
-                rotateLeft();
+                vector = new LeftRotation().apply(vector);
             } else if (isRightRotation(command)) {
                 vector = new RightRotation().apply(vector);
             } else {
                 displace(command);
             }
         }
-    }
-
-    private void rotateLeft() {
-        vector = vector.rotateLeft();
     }
 
     private void displace(String command) {
