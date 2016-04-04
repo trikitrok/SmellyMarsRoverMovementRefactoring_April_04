@@ -1,12 +1,14 @@
 public class Rover {
-    private String direction;
+    private String directionRepresentation;
     private int y;
     private int x;
+    private Direction direction;
 
-    public Rover(int x, int y, String direction) {
-        this.direction = direction;
+    public Rover(int x, int y, String directionRepresentation) {
+        this.directionRepresentation = directionRepresentation;
         this.y = y;
         this.x = x;
+        this.direction = new Direction(directionRepresentation);
     }
 
     public void receive(String commandsSequence) {
@@ -15,10 +17,8 @@ public class Rover {
 
             if (isLeftRotation(command)) {
                 rotateLeft();
-
             } else if (isRightRotation(command)) {
                 rotateRight();
-
             } else {
                 displace(command);
             }
@@ -27,25 +27,25 @@ public class Rover {
 
     private void rotateRight() {
         if (isHeadedNorth()) {
-            direction = "E";
+            directionRepresentation = "E";
         } else if (isHeadedSouth()) {
-            direction = "W";
+            directionRepresentation = "W";
         } else if (isHeadedWest()) {
-            direction = "N";
+            directionRepresentation = "N";
         } else {
-            direction = "S";
+            directionRepresentation = "S";
         }
     }
 
     private void rotateLeft() {
         if (isHeadedNorth()) {
-            direction = "W";
+            directionRepresentation = "W";
         } else if (isHeadedSouth()) {
-            direction = "E";
+            directionRepresentation = "E";
         } else if (isHeadedWest()) {
-            direction = "S";
+            directionRepresentation = "S";
         } else {
-            direction = "N";
+            directionRepresentation = "N";
         }
     }
 
@@ -84,15 +84,15 @@ public class Rover {
     }
 
     private boolean isHeadedWest() {
-        return direction.equals("W");
+        return directionRepresentation.equals("W");
     }
 
     private boolean isHeadedSouth() {
-        return direction.equals("S");
+        return directionRepresentation.equals("S");
     }
 
     private boolean isHeadedNorth() {
-        return direction.equals("N");
+        return directionRepresentation.equals("N");
     }
 
     @Override
@@ -108,10 +108,10 @@ public class Rover {
 
         Rover other = (Rover) obj;
 
-        if (direction == null) {
-            if (other.direction != null)
+        if (directionRepresentation == null) {
+            if (other.directionRepresentation != null)
                 return false;
-        } else if (!direction.equals(other.direction))
+        } else if (!directionRepresentation.equals(other.directionRepresentation))
             return false;
 
         if (x != other.x)
