@@ -7,6 +7,10 @@ public class Coordinates {
         this.y = y;
     }
 
+    public Coordinates add(Coordinates other) {
+        return new Coordinates(x + other.x, y + other.y);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -17,9 +21,5 @@ public class Coordinates {
         if (x != that.x) return false;
         return y == that.y;
 
-    }
-
-    public Coordinates add(Coordinates other) {
-        return new Coordinates(x + other.x, y + other.y);
     }
 }
