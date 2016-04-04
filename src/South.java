@@ -6,4 +6,8 @@ public class South extends Direction {
     public Direction rotateRight() {
         return west();
     }
+
+    public Direction rotateLeft() {
+        return east();
+    }
 }
