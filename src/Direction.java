@@ -39,19 +39,19 @@ public class Direction {
         return east();
     }
 
-    public static Direction east() {
+    protected static Direction east() {
         return new East("E");
     }
 
-    public static Direction west() {
+    protected static Direction west() {
         return new West("W");
     }
 
-    public static Direction north() {
+    protected static Direction north() {
         return new North("N");
     }
 
-    public static Direction south() {
+    protected static Direction south() {
         return new South("S");
     }
 
