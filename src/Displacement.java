@@ -1,4 +1,4 @@
-public class Displacement {
+public class Displacement implements Command {
     private int length;
 
     public Displacement(int length) {

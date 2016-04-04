@@ -9,24 +9,32 @@ public class Rover {
     }
 
     public void receive(String commandsSequence) {
+        List<Command> commands = createCommands(commandsSequence);
+        applyCommands(commands);
+    }
+
+    private void applyCommands(List<Command> commands) {
+        for(Command command : commands) {
+            vector = command.apply(vector);
+        }
+    }
+
+    private List<Command> createCommands(String commandsSequence) {
         List<Command> commands = new ArrayList<>();
 
         for (int i = 0; i < commandsSequence.length(); ++i) {
             String command = commandsSequence.substring(i, i + 1);
 
             if (isLeftRotation(command)) {
-                vector = new LeftRotation().apply(vector);
+                commands.add(new LeftRotation());
             } else if (isRightRotation(command)) {
-                vector = new RightRotation().apply(vector);
+                commands.add(new RightRotation());
             } else {
                 int displacement = extractDisplacement(command);
-                vector = new Displacement(displacement).apply(vector);
+                commands.add(new Displacement(displacement));
             }
         }
-
-        for(Command command : commands) {
-            vector = command.apply(vector);
-        }
+        return commands;
     }
 
     private int extractDisplacement(String commandRepresentation) {
