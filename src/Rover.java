@@ -1,18 +1,8 @@
 public class Rover {
-    private Direction direction;
-    private Coordinates location;
     private Vector vector;
 
     public Rover(int x, int y, String directionRepresentation) {
-        this.direction = Direction.heading(directionRepresentation);
-        this.location = new Coordinates(x, y);
-        this.vector = new Vector(location, direction);
-    }
-
-    private void setVector(Direction direction, Coordinates location) {
-        this.direction = direction;
-        this.location = location;
-        this.vector = new Vector(location, direction);
+        this.vector = new Vector(new Coordinates(x, y),  Direction.heading(directionRepresentation));
     }
 
     public void receive(String commandsSequence) {
@@ -31,18 +21,15 @@ public class Rover {
 
     private void rotateRight() {
         vector = vector.rotateRight();
-        setVector(direction.rotateRight(), location);
     }
 
     private void rotateLeft() {
         vector = vector.rotateLeft();
-        setVector(direction.rotateLeft(), location);
     }
 
     private void displace(String command) {
         int displacement = extractDisplacement(command);
         vector = vector.displace(displacement);
-        setVector(direction, direction.displace(location, displacement));
     }
 
     private int extractDisplacement(String commandRepresentation) {
