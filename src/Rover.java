@@ -14,30 +14,38 @@ public class Rover {
             String command = commandsSequence.substring(i, i + 1);
 
             if (isLeftRotation(command)) {
-                // Rotate Rover
-                if (isHeadedNorth()) {
-                    direction = "W";
-                } else if (isHeadedSouth()) {
-                    direction = "E";
-                } else if (isHeadedWest()) {
-                    direction = "S";
-                } else {
-                    direction = "N";
-                }
+                rotateLeft();
+
             } else if (isRightRotation(command)) {
-                // Rotate Rover
-                if (isHeadedNorth()) {
-                    direction = "E";
-                } else if (isHeadedSouth()) {
-                    direction = "W";
-                } else if (isHeadedWest()) {
-                    direction = "N";
-                } else {
-                    direction = "S";
-                }
+                rotateRight();
+
             } else {
                 displace(command);
             }
+        }
+    }
+
+    private void rotateRight() {
+        if (isHeadedNorth()) {
+            direction = "E";
+        } else if (isHeadedSouth()) {
+            direction = "W";
+        } else if (isHeadedWest()) {
+            direction = "N";
+        } else {
+            direction = "S";
+        }
+    }
+
+    private void rotateLeft() {
+        if (isHeadedNorth()) {
+            direction = "W";
+        } else if (isHeadedSouth()) {
+            direction = "E";
+        } else if (isHeadedWest()) {
+            direction = "S";
+        } else {
+            direction = "N";
         }
     }
 
