@@ -30,15 +30,18 @@ public class Rover {
     }
 
     private void rotateRight() {
+        vector = vector.rotateRight();
         setVector(direction.rotateRight(), location);
     }
 
     private void rotateLeft() {
+        vector = vector.rotateLeft();
         setVector(direction.rotateLeft(), location);
     }
 
     private void displace(String command) {
         int displacement = extractDisplacement(command);
+        vector = vector.displace(displacement);
         setVector(direction, direction.displace(location, displacement));
     }
 
