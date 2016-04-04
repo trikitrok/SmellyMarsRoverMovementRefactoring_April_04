@@ -14,28 +14,28 @@ public class Rover {
         for (int i = 0; i < commandsSequence.length(); ++i) {
             String command = commandsSequence.substring(i, i + 1);
 
-            if (command.equals("l") || command.equals("r")) {
+            if (isLeftRotation(command) || isRightRotation(command)) {
                 // Rotate Rover
-                if (direction.equals("N")) {
-                    if (command.equals("r")) {
+                if (isHeadedNorth()) {
+                    if (isRightRotation(command)) {
                         direction = "E";
                     } else {
                         direction = "W";
                     }
-                } else if (direction.equals("S")) {
-                    if (command.equals("r")) {
+                } else if (isHeadedSouth()) {
+                    if (isRightRotation(command)) {
                         direction = "W";
                     } else {
                         direction = "E";
                     }
-                } else if (direction.equals("W")) {
-                    if (command.equals("r")) {
+                } else if (isHeadedWest()) {
+                    if (isRightRotation(command)) {
                         direction = "N";
                     } else {
                         direction = "S";
                     }
                 } else {
-                    if (command.equals("r")) {
+                    if (isRightRotation(command)) {
                         direction = "S";
                     } else {
                         direction = "N";
@@ -51,17 +51,37 @@ public class Rover {
                 }
                 int displacement = displacement1;
 
-                if (direction.equals("N")) {
+                if (isHeadedNorth()) {
                     y += displacement;
-                } else if (direction.equals("S")) {
+                } else if (isHeadedSouth()) {
                     y -= displacement;
-                } else if (direction.equals("W")) {
+                } else if (isHeadedWest()) {
                     x -= displacement;
                 } else {
                     x += displacement;
                 }
             }
         }
+    }
+
+    private boolean isRightRotation(String command) {
+        return command.equals("r");
+    }
+
+    private boolean isLeftRotation(String command) {
+        return command.equals("l");
+    }
+
+    private boolean isHeadedWest() {
+        return direction.equals("W");
+    }
+
+    private boolean isHeadedSouth() {
+        return direction.equals("S");
+    }
+
+    private boolean isHeadedNorth() {
+        return direction.equals("N");
     }
 
     @Override
