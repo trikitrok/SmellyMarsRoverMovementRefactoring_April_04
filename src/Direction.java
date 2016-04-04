@@ -11,7 +11,7 @@ public class Direction {
 
     public Direction rotateLeft() {
         if (isNorth(directionRepresentation)) {
-            return west();
+            throw new RuntimeException("Defect, code should not get here! (Direction rotateLeft)");
         } else if (isSouth(directionRepresentation)) {
             return east();
         } else if (isWest(directionRepresentation)) {

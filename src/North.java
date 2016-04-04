@@ -6,4 +6,8 @@ public class North extends Direction {
     public Direction rotateRight() {
         return east();
     }
+
+    public Direction rotateLeft() {
+        return west();
+    }
 }
