@@ -9,7 +9,7 @@ public class Direction {
         if (isNorth()) {
             throw new RuntimeException("Defect, code should not get here! (Direction rotateRight)");
         } else if (isSouth()) {
-            return west();
+            throw new RuntimeException("Defect, code should not get here! (Direction rotateRight)");
         } else if (isWest()) {
             return north();
         } else {
@@ -43,6 +43,8 @@ public class Direction {
     public static Direction heading(String directionRepresentation) {
         if(directionRepresentation.equals("N")) {
             return north();
+        } else if(directionRepresentation.equals("S")) {
+            return south();
         }
 
         return new Direction(directionRepresentation);
@@ -61,6 +63,6 @@ public class Direction {
     }
 
     public static Direction south() {
-        return new Direction("S");
+        return new South("S");
     }
 }
