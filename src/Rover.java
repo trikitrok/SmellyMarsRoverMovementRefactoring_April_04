@@ -12,15 +12,11 @@ public class Rover {
             if (isLeftRotation(command)) {
                 rotateLeft();
             } else if (isRightRotation(command)) {
-                rotateRight();
+                vector = new RightRotation().apply(vector);
             } else {
                 displace(command);
             }
         }
-    }
-
-    private void rotateRight() {
-        vector = vector.rotateRight();
     }
 
     private void rotateLeft() {
