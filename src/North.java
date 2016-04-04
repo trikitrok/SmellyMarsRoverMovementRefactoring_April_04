@@ -10,4 +10,8 @@ public class North extends Direction {
     public Direction rotateLeft() {
         return west();
     }
+
+    public Coordinates displace(Coordinates location, int displacement) {
+        return location.add(new Coordinates(0, displacement));
+    }
 }
