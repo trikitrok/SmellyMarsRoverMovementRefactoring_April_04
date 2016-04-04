@@ -1,10 +1,4 @@
 public class Direction {
-    private String directionRepresentation;
-
-    protected Direction(String directionRepresentation) {
-        this.directionRepresentation = directionRepresentation;
-    }
-
     public Direction rotateRight() {
         throw new RuntimeException("Defect, code should not get here! (Direction rotateRight)");
     }
@@ -20,12 +14,8 @@ public class Direction {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Direction direction = (Direction) o;
-
-        return directionRepresentation != null ? directionRepresentation.equals(direction.directionRepresentation) : direction.directionRepresentation == null;
-
+        if (o == null) return false;
+        return getClass() == o.getClass();
     }
 
     public static Direction heading(String directionRepresentation) {
@@ -40,19 +30,19 @@ public class Direction {
     }
 
     protected static Direction east() {
-        return new East("E");
+        return new East();
     }
 
     protected static Direction west() {
-        return new West("W");
+        return new West();
     }
 
     protected static Direction north() {
-        return new North("N");
+        return new North();
     }
 
     protected static Direction south() {
-        return new South("S");
+        return new South();
     }
 
     private static boolean isNorth(String directionRepresentation) {
